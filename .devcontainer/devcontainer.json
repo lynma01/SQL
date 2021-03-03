@@ -1,6 +1,9 @@
 {
   "name": "SQL Dev Environment",
-  "build": {"dockerfile": "dockerfile-dev-env"},
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.extend.yml"],
+
+  "service": "your-service-name-here",
+  "workspaceFolder": "/workspace",
   "forwardPorts": [15789],
   "settings": {
     "workbench.colorTheme": "Cobalt2"
@@ -14,5 +17,5 @@
     "cweijan.vscode-postgresql-client2"
   ],
   
-  "shutdownAction": "stopContainer"
+  "shutdownAction": "stopCompose"
 }
