@@ -1,0 +1,18 @@
+{
+  "name": "SQL Dev Environment",
+  "build": {"dockerfile": "dockerfile-dev-env"},
+  "forwardPorts": [15789],
+  "settings": {
+    "workbench.colorTheme": "Cobalt2"
+  },
+
+  "extensions": [
+    "websos.theme-cobalt2",
+    "dineug.vuerd-vscode",
+    "randomfractalsinc.geo-data-viewer",
+    "chris-rimmer.liquibase-snippets",
+    "cweijan.vscode-postgresql-client2"
+  ],
+  
+  "shutdownAction": "stopContainer"
+}

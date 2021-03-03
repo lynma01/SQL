@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 services:
     sqlserver1:
         build: 
@@ -7,8 +7,11 @@ services:
         ports:  
           - "15789:1433"
         env_file:
-          - sqlserver.env
-          - sapassword.env
+          - ACCEPT_EULA=Y
+          - MSSQL_DATA_DIR=/var/opt/sqlserver/data
+          - MSSQL_LOG_DIR=/var/opt/sqlserver/log
+          - MSSQL_BACKUP_DIR=/var/opt/sqlserver/backup
+          - MSSQL_SA_PASSWORD=Testing1122
         volumes: 
           - sqlsystem:/var/opt/mssql/
           - sqldata:/var/opt/sqlserver/data
