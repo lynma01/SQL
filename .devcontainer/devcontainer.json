@@ -2,7 +2,7 @@
   "name": "SQL Dev Environment",
   "dockerComposeFile": ["../docker-compose.yml", "docker-compose.extend.yml"],
 
-  "service": "your-service-name-here",
+  "service": "sql-dev-environment",
   "workspaceFolder": "/workspace",
   "forwardPorts": [15789],
   "settings": {
@@ -11,11 +11,13 @@
 
   "extensions": [
     "websos.theme-cobalt2",
+    "ms-azuretools.vscode-docker",
     "dineug.vuerd-vscode",
     "randomfractalsinc.geo-data-viewer",
     "chris-rimmer.liquibase-snippets",
     "cweijan.vscode-postgresql-client2"
   ],
-  
+
+  "remoteUser": "root",
   "shutdownAction": "stopCompose"
 }
