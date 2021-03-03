@@ -1,4 +1,4 @@
-# build from the Ubuntu 20.10 image
+# build from the Ubuntu 18.04 image
 FROM ubuntu:18.04
  
 # create the mssql user
