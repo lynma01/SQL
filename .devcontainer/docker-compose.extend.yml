@@ -1,6 +1,9 @@
 version: '3.7'
 services:
   SQL-Dev-Environment:
+    build: 
+      context: .
+      dockerfile: dockerfile-dev-env
     volumes:
       # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
       # mounts are relative to the first file in the list, which is a level up.
