@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  sql-dev-environment:
+  dev-environment:
     build: 
       context: .
       dockerfile: dockerfile
