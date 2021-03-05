@@ -1,17 +1,15 @@
 {
   "name": "SQL Dev Environment",
-  "dockerComposeFile": [
-    "../containers/MS_SQL/docker-compose.yml",
-    "../containers/caddy/docker-compose.caddy.yml",
-    "docker-compose.extend.yml"
-    ],
+  "dockerComposeFile": ["../docker-compose.yml"],
 
   "service": "dev-environment",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspace" ,
   "forwardPorts": 
     [80, 5000, 5001, 5002, 5003, 5004, 5005],
+  
   "settings": {
-    "workbench.colorTheme": "Cobalt2"
+    "workbench.colorTheme": "Cobalt2",
+    "terminal.integrated.shell.linux": "/bin/bash"
   },
 
   "extensions": [
