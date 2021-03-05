@@ -2,7 +2,7 @@
   "name": "SQL Dev Environment",
   "dockerComposeFile": [
     "../containers/MS_SQL/docker-compose.yml",
-    
+    "../containers/caddy/docker-compose.caddy.yml",
     "docker-compose.extend.yml"
     ],
 
