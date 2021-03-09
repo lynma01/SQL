@@ -1,9 +1,9 @@
 version: '3.7'
 services:
   ms_server:
-      container_name: "msql_server"
-      build: 
+      container_name: "WWI_SQL"
+      build:
         context: .
         dockerfile: MS_SQL_WWI/dockerfile
       ports:  
-        - "5000-5005:1433"
+        - "5000:1433"
