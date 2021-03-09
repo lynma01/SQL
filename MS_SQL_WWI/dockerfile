@@ -1,0 +1,22 @@
+# Adventure Works Database on SQL Server 2019
+FROM mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-18.04
+
+ENV SA_PASSWORD=Testing1122
+ENV ACCEPT_EULA=Y
+
+# Change to root user to run wget and move the file
+USER root
+
+RUN wget -progress=bar:force -q -O WideWorldImporters-Full.bak https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak \
+   && chmod 777 WideWorldImporters-Full.bak \
+   && mkdir /var/opt/mssql/backup \
+   && cp WideWorldImporters-Full.bak /var/opt/mssql/backup/
+
+# Change back to the mssql user to restore the database
+USER mssql
+
+# Launch SQL Server, confirm startup is complete, restore the database, then terminate SQL Server.
+RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" \
+    && /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P ${SA_PASSWORD} -Q 'RESTORE DATABASE WideWorldImporters FROM DISK = "/var/opt/mssql/backup/wwi.bak" WITH MOVE "WWI_Primary" TO "/var/opt/mssql/data/WideWorldImporters.mdf", MOVE "WWI_UserData" TO "/var/opt/mssql/data/WideWorldImporters_userdata.ndf", MOVE "WWI_Log" TO "/var/opt/mssql/data/WideWorldImporters.ldf", MOVE "WWI_InMemory_Data_1" TO "/var/opt/mssql/data/WideWorldImporters_InMemory_Data_1", NOUNLOAD, STATS = 5'
+
+CMD ["/opt/mssql/bin/sqlservr"]

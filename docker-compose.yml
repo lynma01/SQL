@@ -15,7 +15,7 @@ services:
       container_name: "msql_server"
       build: 
         context: .
-        dockerfile: MS_SQL_AW/dockerfile
+        dockerfile: MS_SQL_WWI/dockerfile
       ports:  
         - "5000-5005:1433"
   jenkins:
