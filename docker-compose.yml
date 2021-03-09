@@ -15,12 +15,9 @@ services:
       container_name: "msql_server"
       build: 
         context: .
-        dockerfile: MS_SQL/dockerfile
+        dockerfile: MS_SQL_AW/dockerfile
       ports:  
         - "5000-5005:1433"
-      env_file:
-        - MS_SQL/sqlserver.env
-        - MS_SQL/sapassword.env
   jenkins:
       container_name: "jenkins"
       image: jenkins/jenkins:lts
