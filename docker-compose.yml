@@ -1,21 +1,29 @@
 version: '3.7'
 services:
-    sqlserver1:
-        build: 
-          context: .
-          dockerfile: dockerfile
-        ports:  
-          - "15789:1433"
-        env_file:
-          - sqlserver.env
-          - sapassword.env
-        volumes: 
-          - sqlsystem:/var/opt/mssql/
-          - sqldata:/var/opt/sqlserver/data
-          - sqllog:/var/opt/sqlserver/log
-          - sqlbackup:/var/opt/sqlserver/backup
-volumes:
-  sqlsystem:
-  sqldata:
-  sqllog:
-  sqlbackup:
+  dev-environment:
+    build: 
+      context: .
+      dockerfile: .devcontainer/dockerfile
+    volumes:
+      # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
+      # mounts are relative to the first file in the list, which is a level up.
+      - .:/workspace
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
+  ms_server:
+      container_name: "msql_server"
+      build: 
+        context: .
+        dockerfile: MS_SQL/dockerfile
+      ports:  
+        - "5000-5005:1433"
+      env_file:
+        - MS_SQL/sqlserver.env
+        - MS_SQL/sapassword.env
+  jenkins:
+      container_name: "jenkins"
+      image: jenkins/jenkins:lts
+      ports: 
+        - "8080:8080"
+        - "50000:50000"

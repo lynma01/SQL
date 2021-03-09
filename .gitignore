@@ -1,2 +1,4 @@
-#Visual Studio cahce/options directory
-.vs/
+
+#ignore the jenkins archives
+archives
+
