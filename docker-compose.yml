@@ -7,9 +7,3 @@ services:
         dockerfile: MS_SQL_AW/dockerfile
       ports:  
         - "5000-5005:1433"
-  jenkins:
-      container_name: "jenkins"
-      image: jenkins/jenkins:lts
-      ports: 
-        - "8080:8080"
-        - "50000:50000"
